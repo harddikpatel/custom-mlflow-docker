@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: mymlflow
+  namespace: mlflow
+  labels:
+    app: mymlflow
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mymlflow-pods
+  template:
+    metadata:
+      labels:
+        app: mymlflow-pods
+    spec:
+      serviceAccount: mlflow
+      containers:
+        - name: mymlflow-pod
+          image: patelsaheb/mlflow:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8975
+          envFrom:
+            - configMapRef:
+                name: mlflow
+          env:
+            - name: MLFLOW_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mlflow-db-credentials
+                  key: db_password
+                  optional: false
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mlflow-service
+  namespace: mlflow
+  # annotations:
+  #   service.beta.kubernetes.io/aws-load-balancer-type: "alb"
+spec:
+  selector:
+    app: mymlflow-pods
+  ports:
+    - protocol: TCP
+      port: 80 
+      targetPort: 8975
+  type: ClusterIP
+  # loadBalancerSourceRanges:
+  #   - "0.0.0.0/0"
+  # type: LoadBalancer
