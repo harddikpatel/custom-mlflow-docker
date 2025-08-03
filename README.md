@@ -21,14 +21,14 @@ This repository provides all the configuration and manifests to deploy an MLflow
 
 ## 🧭 Setup Roadmap
 
-| Step | Task | Emoji |
-|------|------|-------|
-| ✅ 1 | [Create Namespace](#-1-create-namespace) | 📂 |
-| 🔧 2 | [Create Service Account with IAM Role](#-2-create-kubernetes-service-account) | 🔐 |
-| 🐍 3 | [Define Python Requirements & Entrypoint](#-3-define-python-requirements--entrypoint) | 📦 |
-| 🛠️ 4 | [Build & Push Docker Image](#-4-build--push-docker-image) | 🐳 |
-| ⚙️ 5 | [Create ConfigMap](#-5-create-configmap) | ⚙️ |
-| 🔐 6 | [Create Secrets for DB](#-6-create-secrets-for-db) | 🔑 |
-| 🚀 7 | [Deploy MLflow](#-7-deploy-mlflow) | 🚀 |
+| Step | Task |
+|------|------|
+| ✅ 1 | [Create Namespace](#-1-create-namespace) | 
+| 🔧 2 | [Create Service Account with IAM Role](#-2-create-kubernetes-service-account) | 
+| 🐍 3 | [Define Python Requirements & Entrypoint](#-3-define-python-requirements--entrypoint) | 
+| 🛠️ 4 | [Build & Push Docker Image](#-4-build--push-docker-image) | 
+| ⚙️ 5 | [Create ConfigMap](#-5-create-configmap) | 
+| 🔐 6 | [Create Secrets for DB](#-6-create-secrets-for-db) | 
+| 🚀 7 | [Deploy MLflow](#-7-deploy-mlflow) | 
 
 ---
